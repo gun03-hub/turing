@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "build:dev": "vite build --mode development",
     "@radix-ui/react-toast": "^1.2.15",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tanstack/react-query": "^4.41.0",
