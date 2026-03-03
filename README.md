@@ -1,18 +1,17 @@
 ## Branch Usage
 
-This repository maintains three branches:
+This repository maintains branches:
 
 * **main** — Contains the final stable version of the website.
   Code is merged here only after testing.
-
-* **dev** — Used by the team for active development.
-  All members push their changes here.
 
 * **original** — Stores the initial reference version of the project.
   Not used for daily development.
 
 ### Workflow
 
-Team members work in `dev`.
-After testing, changes are merged into `main`.
+Team members create branch from main;
+Do update in your specific branch;
+Make pull Request.
+After testing, changes will be merged into `main`.
 The `original` branch remains unchanged as a baseline reference.
