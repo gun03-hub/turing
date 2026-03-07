@@ -40,6 +40,115 @@
             cashPrize: "₹1.5K",
             registrationLink: "https://tr.ee/B20RjB"
         },
+            // Overload 2026 Events
+            {
+                id: 100,
+                title: "Trace Overflow",
+                type: "overload",
+                date: "2026-03-17",
+                time: "11:00 AM - 12:30 PM",
+                duration: "1 day",
+                venue: "Conference Room",
+                address: "Acharya Narendra Dev College, University of Delhi",
+                description: "Problem Solving competition. Max entries: 40. Prize: Winner - Rs. 700 + Certificate, Runner up - Certificate.",
+                image: "./Assets/Overload 2026/TRACE_OVERFLOW.png",
+                speakers: [],
+                status: "upcoming",
+                registrationOpen: true,
+                featured: true,
+                cashPrize: "Rs. 700",
+                registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfJTYl6CIOgITmx_QR19bOktPVgpEYIbvxUrvtITJcYbQDZeQ/viewform?usp=publish-editor"
+            },
+            {
+                id: 101,
+                title: "Tech Quizz",
+                type: "overload",
+                date: "2026-03-17",
+                time: "11:00 AM - 12:30 PM",
+                duration: "1 day",
+                venue: "Seminar Hall",
+                address: "Acharya Narendra Dev College, University of Delhi",
+                description: "Tech Quiz. Max entries: 30. Prize: Winner - Rs. 700 + Certificate, Runner up - Certificate.",
+                image: "./Assets/Overload 2026/TECH_QUIZZ.png",
+                speakers: [],
+                status: "upcoming",
+                registrationOpen: true, // Keeping it true but handling it as dummy
+                featured: true,
+                cashPrize: "Rs. 700",
+                registrationLink: "#"
+            },
+            {
+                id: 102,
+                title: "HuntX",
+                type: "overload",
+                date: "2026-03-17",
+                time: "12:00 PM - 1:30 PM",
+                duration: "1 day",
+                venue: "College Campus",
+                address: "Acharya Narendra Dev College, University of Delhi",
+                description: "Treasure Hunt competition. Max entries: 10 Teams (2 players each). Prize: Winner - Rs. 700 + Certificate, Runner up - Certificate.",
+                image: "./Assets/Overload 2026/HUNTX.png",
+                speakers: [],
+                status: "upcoming",
+                registrationOpen: true,
+                featured: true,
+                cashPrize: "Rs. 700",
+                registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfxCJimIOzWsQGZZYliQMI0icV8TgUY0PSd7YJLAkRKIN07sg/viewform?usp=header"
+            },
+            {
+                id: 103,
+                title: "Fall Guys",
+                type: "overload",
+                date: "2026-03-17",
+                time: "12:30 PM - 2:00 PM",
+                duration: "1 day",
+                venue: "Conference Room",
+                address: "Acharya Narendra Dev College, University of Delhi",
+                description: "PC Gaming tournament. Max entries: 60. Prize: Winner - Rs. 1000 + Certificate, Runner up - Certificate.",
+                image: "./Assets/Overload 2026/FALL_GUYS.png",
+                speakers: [],
+                status: "upcoming",
+                registrationOpen: true,
+                featured: true,
+                cashPrize: "Rs. 1000",
+                registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSe2jwjvlqeSlXnD-qdx2YLOMD6pR4qyBNLPYx6UOAKxrfuLqw/viewform?usp=dialog"
+            },
+            {
+                id: 104,
+                title: "Flag The Code",
+                type: "overload",
+                date: "2026-03-17",
+                time: "12:30 PM - 1:30 PM",
+                duration: "1 day",
+                venue: "Seminar Hall",
+                address: "Acharya Narendra Dev College, University of Delhi",
+                description: "Puzzle/CTF competition. Max entries: 40. Prize: Winner - Rs. 1000 + Certificate, Runner up - Certificate.",
+                image: "./Assets/Overload 2026/CATCH_THE_FLAG.png",
+                speakers: [],
+                status: "upcoming",
+                registrationOpen: true,
+                featured: true,
+                cashPrize: "Rs. 1000",
+                registrationLink: "https://forms.gle/WKMQES5n4J98ig1z8"
+            },
+            {
+                id: 105,
+                title: "Free Fire",
+                type: "overload",
+                date: "2026-03-17",
+                time: "2:30 PM - 4:00 PM",
+                duration: "1 day",
+                venue: "Seminar Hall",
+                address: "Acharya Narendra Dev College, University of Delhi",
+                description: "Mobile Gaming tournament. Max entries: 40. Prize: Winner - Rs. 1000 + Certificate, Runner up - Certificate.",
+                image: "./Assets/Overload 2026/FREE_FIRE.png",
+                speakers: [],
+                status: "upcoming",
+                registrationOpen: true,
+                featured: true,
+                cashPrize: "Rs. 1000",
+                registrationLink: "https://docs.google.com/forms/d/e/1FAIpQLSfYkK8vMNAghG6s-syj4zhxxcZLHUa59wXArpsepKLbPZA6Sg/viewform?usp=header"
+            },
             {
                 id: 1,
                 title: "BGMI",
@@ -483,6 +592,8 @@
             if (eventPages.hasOwnProperty(eventId)) {
                 // Open the corresponding page in a new tab
                 window.open(eventPages[eventId], "_blank");
+            } else if (eventId >= 100) {
+                alert("Details coming soon!");
             } else {
                 // If event is closed, show modal smoothly
                 openEventModal(eventId);
@@ -492,8 +603,17 @@
     
         document.querySelectorAll(".register-btn:not([disabled])").forEach((button) => {
         button.addEventListener("click", function () {
-            const googleFormLink = "https://tr.ee/B20RjB"; 
-            window.open(googleFormLink, "_blank"); // Opens the form in a new tab
+            const eventId = Number.parseInt(this.getAttribute("data-event-id"));
+            const event = events.find((e) => e.id === eventId);
+            
+            if (event && event.registrationLink && event.registrationLink !== "#") {
+                window.open(event.registrationLink, "_blank");
+            } else if (event && event.registrationLink === "#") {
+                 alert("Registration opening soon!");
+            } else {
+                const googleFormLink = "https://tr.ee/B20RjB"; 
+                window.open(googleFormLink, "_blank"); 
+            }
         })
         })
     }
@@ -590,8 +710,14 @@
         const registerBtn = modalContent.querySelector(".register-btn")
         if (registerBtn) {
         registerBtn.addEventListener("click", function () {
-            const googleFormLink = "https://tr.ee/B20RjB"; 
-            window.open(googleFormLink, "_blank"); // Opens the form in a new tab
+            if (event.registrationLink && event.registrationLink !== "#") {
+                window.open(event.registrationLink, "_blank");
+            } else if (event.registrationLink === "#") {
+                alert("Registration opening soon!");
+            } else {
+                const googleFormLink = "https://tr.ee/B20RjB"; 
+                window.open(googleFormLink, "_blank"); 
+            }
         })
         }
 
